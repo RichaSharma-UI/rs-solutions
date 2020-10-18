@@ -22,22 +22,26 @@ class DashboardPage extends React.Component {
                     {employees.list &&
                         <div className="table-responsive mt-3">
                             <table className="table w-100">
-                                <tr>
-                                    <th>Full Name</th>
-                                    <th>Age</th>
-                                    <th>Gender</th>
-                                    <th>Email Id</th>
-                                    <th>Phone Number</th>
-                                </tr>
-                                {employees.list.map((employee, index) =>
-                                    <tr key={employee.id}>
-                                        <td>{employee.name}</td>
-                                        <td>{employee.age}</td>
-                                        <td>{employee.gender}</td>
-                                        <td>{employee.email}</td>
-                                        <td>{employee.phoneNo}</td>
+                                <thead>
+                                    <tr>
+                                        <th>Full Name</th>
+                                        <th>Age</th>
+                                        <th>Gender</th>
+                                        <th>Email Id</th>
+                                        <th>Phone Number</th>
                                     </tr>
-                                )}
+                                </thead>
+                                <tbody>
+                                    {employees.list.map((employee, index) =>
+                                        <tr key={employee.id}>
+                                            <td>{employee.name}</td>
+                                            <td>{employee.age}</td>
+                                            <td>{employee.gender}</td>
+                                            <td>{employee.email}</td>
+                                            <td>{employee.phoneNo}</td>
+                                        </tr>
+                                    )}
+                                </tbody>
                             </table>
                         </div>
                     }
