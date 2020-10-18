@@ -1,3 +1,5 @@
+import { employeeResponse } from './mock-data/employees';
+
 // array in local storage for registered users
 let users = JSON.parse(localStorage.getItem('users')) || [];
     
@@ -38,10 +40,10 @@ export function configureFakeBackend() {
                 }
 
                 // get users
-                if (url.endsWith('/users') && opts.method === 'GET') {
+                if (url.endsWith('/employees') && opts.method === 'GET') {
                     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
-                        resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(users))});
+                        resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(employeeResponse.employees))});
                     } else {
                         // return 401 not authorised if token is null or invalid
                         reject('Unauthorised');
