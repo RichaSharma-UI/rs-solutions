@@ -1,14 +1,31 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Welcome to React Project!</h2>
-      </header>
-    </div>
-  );
+import { RegisterPage } from './Pages/Register';
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="jumbotron">
+                <div className="container">
+                    <div className="col-sm-8 col-sm-offset-2">
+                        <Router>
+                            <Switch>
+                                <Route path="/register" component={RegisterPage} />
+                                <Redirect from="*" to="/register" />
+                            </Switch>
+                        </Router>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
-export default App;
+const connectedApp = connect()(App);
+export { connectedApp as App };
